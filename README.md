@@ -15,7 +15,9 @@ In VS Code, select the Python interpreter at `venv\Scripts\python.exe` for the n
 
 Download the VinDr-Mammo images (the project used a Kaggle-hosted copy) and keep the original annotation CSV files in `data/`. Prepared splits are stored in `data/splits/` as `train_pairs.csv`, `val_pairs.csv`, and `test_pairs.csv`.
 
-The `CC_path` and `MLO_path` columns must point to existing image files on your machine. If the image directory changes, update these paths before running the notebooks. The image dataset is not included in this repository.
+The committed split CSVs contain absolute image paths under `D:\images_png`. On another machine, replace that prefix in the `CC_path` and `MLO_path` columns of **all three** split CSVs with the local PNG directory before running notebooks 02–05. The expected layout is `<PNG directory>/<study_id>/<image_id>.png`.
+
+If you run notebook 01 to regenerate the splits, first change its `PNG_DIR` variable to your local PNG directory; the notebook will then write the corresponding paths into the CSVs. The image dataset is not included in this repository.
 
 ## Execution instructions
 
