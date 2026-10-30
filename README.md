@@ -27,8 +27,8 @@ Open the `notebooks/` folder in VS Code and run the notebooks in order:
 2. `02_single-view_models.ipynb` — train single-view baselines.
 3. `03_multi-view.ipynb` — train and compare fusion models.
 4. `04_ablation.ipynb` — run loss, resolution, and augmentation experiments.
-5. `05_evaluation.ipynb` — evaluate saved checkpoints and generate figures.
+5. `05_evaluation.ipynb` — train any missing final single-view and multi-view checkpoints for seeds 42, 10, and 21, then evaluate them and generate figures.
 
-Run from the project environment with the project folders in their documented locations. Training requires the dataset; evaluation additionally requires saved checkpoints in `models/` (including `models/final/`). Outputs are stored in `results/`.
+Run from the project environment with the project folders in their documented locations. Training requires the dataset. Notebook 05 reuses a final run only when its checkpoint in `models/final/` and its complete ten-epoch history in `results/evaluation/` both exist. In a fresh clone, the published histories are present but the large checkpoints are not: notebook 05 copies those histories to `results/evaluation/preexisting_histories/` before retraining the six final runs. An incomplete history or a checkpoint without its history stops execution with an error. Outputs are stored in `results/`.
 
 The selected false-positive, false-negative, and high-confidence cases are reviewed in `results/evaluation/qualitative_error_review.csv`. To regenerate any missing Grad-CAM figures for these cases after placing the seed-42 multi-view checkpoint in `models/final/`, run `python scripts/generate_error_gradcam.py` from the project root.

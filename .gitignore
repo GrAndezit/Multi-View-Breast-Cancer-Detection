@@ -20,6 +20,9 @@ data/splits/*
 *.pt
 *.ckpt
 
+# Local backups made before reproducing final training runs
+results/evaluation/preexisting_histories/
+
 # Local configuration and secrets
 .env
 .env.*
