@@ -30,3 +30,5 @@ Open the `notebooks/` folder in VS Code and run the notebooks in order:
 5. `05_evaluation.ipynb` — evaluate saved checkpoints and generate figures.
 
 Run from the project environment with the project folders in their documented locations. Training requires the dataset; evaluation additionally requires saved checkpoints in `models/` (including `models/final/`). Outputs are stored in `results/`.
+
+The selected false-positive, false-negative, and high-confidence cases are reviewed in `results/evaluation/qualitative_error_review.csv`. To regenerate any missing Grad-CAM figures for these cases after placing the seed-42 multi-view checkpoint in `models/final/`, run `python scripts/generate_error_gradcam.py` from the project root.
