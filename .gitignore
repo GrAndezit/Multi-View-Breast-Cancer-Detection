@@ -10,8 +10,10 @@ __pycache__/
 .pytest_cache/
 
 # Local datasets and medical images
-data/
-*.dcm
+data/*
+!data/splits/
+data/splits/*
+!data/splits/*.csv
 
 # Model checkpoints
 *.pth
