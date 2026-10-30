@@ -1,0 +1,7 @@
+Model,Seed,TN,FP,FN,TP
+single_view,42,1636,172,49,50
+single_view,10,1623,185,47,52
+single_view,21,1606,202,44,55
+multi_view,42,1585,223,41,58
+multi_view,10,1534,274,41,58
+multi_view,21,1762,46,60,39

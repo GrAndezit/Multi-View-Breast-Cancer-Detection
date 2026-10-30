@@ -1,0 +1,7 @@
+Model,Seed,Best epoch,AUROC,AUPRC,Sensitivity,Specificity,F1,Checkpoint
+single_view,42,10,0.8368405001524855,0.3734946070753523,0.5964912280701754,0.8947849954254345,0.3300970873786408,c:\Users\Admin\Desktop\Projects\5_sem\DeepLearning\lab4\models\final\single_view_seed42_best.pth
+single_view,10,5,0.8193608449302578,0.357417634262891,0.5789473684210527,0.8801463860933212,0.2986425339366516,c:\Users\Admin\Desktop\Projects\5_sem\DeepLearning\lab4\models\final\single_view_seed10_best.pth
+single_view,21,7,0.845347586716104,0.404871464534099,0.6140350877192983,0.868252516010979,0.2966101694915254,c:\Users\Admin\Desktop\Projects\5_sem\DeepLearning\lab4\models\final\single_view_seed21_best.pth
+multi_view,42,4,0.8397698271295806,0.4090694671740044,0.5614035087719298,0.8499542543458372,0.2529644268774703,c:\Users\Admin\Desktop\Projects\5_sem\DeepLearning\lab4\models\final\multi_view_seed42_best.pth
+multi_view,10,5,0.8076194603617921,0.3922678728173945,0.6666666666666666,0.827996340347667,0.2685512367491166,c:\Users\Admin\Desktop\Projects\5_sem\DeepLearning\lab4\models\final\multi_view_seed10_best.pth
+multi_view,21,7,0.8205887545946293,0.4417250776568331,0.4561403508771929,0.9551692589204026,0.3939393939393939,c:\Users\Admin\Desktop\Projects\5_sem\DeepLearning\lab4\models\final\multi_view_seed21_best.pth
