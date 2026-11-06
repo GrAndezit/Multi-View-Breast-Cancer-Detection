@@ -32,3 +32,11 @@ Open the `notebooks/` folder in VS Code and run the notebooks in order:
 Run from the project environment with the project folders in their documented locations. Training requires the dataset. Notebook 05 reuses a final run only when its checkpoint in `models/final/` and its complete ten-epoch history in `results/evaluation/` both exist. In a fresh clone, the published histories are present but the large checkpoints are not: notebook 05 copies those histories to `results/evaluation/preexisting_histories/` before retraining the six final runs. An incomplete history or a checkpoint without its history stops execution with an error. Outputs are stored in `results/`.
 
 The selected false-positive, false-negative, and high-confidence cases are reviewed in `results/evaluation/qualitative_error_review.csv`. To regenerate any missing Grad-CAM figures for these cases after placing the seed-42 multi-view checkpoint in `models/final/`, run `python scripts/generate_error_gradcam.py` from the project root.
+
+## Supplementary training-duration verification
+
+After feedback on the original ten-epoch limit, both final architectures were rerun for 20 epochs on seeds 42, 21 and 10. The protocol, per-seed table, six two-panel figures and interpretation are in [Training_Duration_Verification.md](Training_Duration_Verification.md). The six runs are also marked as supplementary in `experiment_log.xlsx`. Notebook 05 links to this verification at the end, after the original test analysis.
+
+All six best validation checkpoints came from epochs 3–9; no epoch from 11 to 20 improved on them. These were fresh validation-only runs, not continuations of the original ten-epoch optimizations. The original held-out test comparison remains unchanged.
+
+Reproduce with `python scripts/train_stability_experiment.py --model both --seeds 42 21 10 --batch-size 1 --workers 4 --fixed-lr --min-epochs 20 --max-epochs 30`. The supplementary checkpoints are in `models/training_stability/`; histories and figures are in `results/training_stability/`.

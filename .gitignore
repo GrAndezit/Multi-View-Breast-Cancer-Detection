@@ -22,6 +22,7 @@ data/splits/*
 
 # Local backups made before reproducing final training runs
 results/evaluation/preexisting_histories/
+results/training_stability/*.partial.csv
 
 # Local configuration and secrets
 .env
@@ -36,3 +37,9 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+# Local submission packaging and report conversion assets
+submission/
+scripts/package_moodle_submission.py
+Mammography_Research_Report_assets/
+models/final/SHA256SUMS.txt

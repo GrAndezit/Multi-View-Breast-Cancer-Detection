@@ -4,7 +4,9 @@
 
 Vilnius Gediminas Technical University | Deep Learning
 
-Dataset: VinDr-Mammo · Report date: October 2026
+Dataset: VinDr-Mammo · Report updated: November 2026
+
+*Figures are embedded in the [DOCX report](Mammography_Research_Report.docx); this Markdown version retains their captions and discussion.*
 
 ## Abstract
 
@@ -106,8 +108,6 @@ The 512 × 512 model yielded substantially higher validation average precision. 
 
 Moderate rotations (±10°), translations (up to 5%) and scaling (0.95–1.05) improved thresholded F1, sensitivity and specificity, but lowered AUPRC. Thus improvement depended on the metric and threshold; this augmentation was not adopted in the final matched CC-versus-CC+MLO comparison.
 
-![Figure 1](Mammography_Research_Report_assets/figure-1.png)
-
 *Figure 1. Validation average precision for distinct ablation families; cross-family bar heights should not be interpreted as isolated causal effects.*
 
 ## 9. Held-out test performance and statistical analysis
@@ -121,8 +121,6 @@ After validation-based model selection, all six seed-specific checkpoints were e
 | Sensitivity | 0.5286 ± 0.0254 | 0.5219 ± 0.1108 |
 | Specificity | 0.8969 ± 0.0083 | 0.9000 ± 0.0662 |
 | F1 | 0.3100 ± 0.0013 | 0.3328 ± 0.0810 |
-
-![Figure 2](Mammography_Research_Report_assets/figure-2.png)
 
 *Figure 2. Mean held-out test AUROC and AUPRC for three independently trained checkpoints per architecture.*
 
@@ -143,8 +141,6 @@ The most confident mistakes were selected using score assigned to the incorrect 
 
 Gradient-weighted Class Activation Mapping (Grad-CAM) was calculated on the last convolutional block of each ResNet50 encoder in the multi-view model. Maps for CC and MLO were aligned with aspect-ratio-preserved preprocessed images. Examples of true positives, true negatives, false positives, false negatives, and cases corrected or introduced by fusion were inspected. Some heatmaps displayed localized activation within the breast, whereas others highlighted borders, background or diffuse regions. Different patterns occurred across views and between correct and incorrect predictions.
 
-![Figure 3](Mammography_Research_Report_assets/figure-3.png)
-
 *Figure 3. Representative Grad-CAM visualization extracted directly from the evaluation notebook (seed 42). The map explains positive-logit contribution, not lesion location.*
 
 Grad-CAM is descriptive rather than a measure of clinical correctness: without lesion-level expert annotation, a high-intensity map cannot establish that the network has localized or recognized a malignancy. Maps based on the positive logit also should not be interpreted as complete explanations of negative decisions.
@@ -162,6 +158,10 @@ A modest increase in test average precision suggests CC+MLO may supply complemen
 ## 14. Conclusion
 
 This study implemented and evaluated a reproducible VinDr-Mammo breast-level binary classification pipeline across single-view models, multi-view fusion methods and controlled ablations. The selected two-branch ResNet50 concatenation model achieved higher mean test AUROC (0.8005) and AUPRC (0.4555) than the CC-only ResNet50 (0.7880 and 0.4307) across three seeds, yet bootstrap intervals included no difference. Higher input resolution gave the largest developmental AUPRC change; focal loss raised positive-class sensitivity; attention fusion did not consistently improve over concatenation. Error and Grad-CAM analyses highlighted both the potential and limitations of multi-view evidence. Multi-view learning may improve suspicion ranking, but its superiority and clinical value remain unproven.
+
+## 15. Supplementary training-duration verification
+
+After feedback about the original ten-epoch training limit, both final architectures were trained again on seeds 42, 21 and 10 with the original physical batch size, gradient accumulation and fixed learning rates. Each fresh run completed 20 epochs. The best validation AUPRC occurred at epochs 3–9 in all six runs; no epoch from 11 to 20 exceeded the best earlier checkpoint. Training loss approached zero while validation loss rose. These validation-only reruns support selecting the best checkpoint within ten epochs for this setup, but do not establish a universal optimal stopping point. They were not used to reselect the original final models or revise held-out test results. The complete protocol, per-seed results and curves are in [Training_Duration_Verification.md](Training_Duration_Verification.md).
 
 ## References
 
